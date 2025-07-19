@@ -250,6 +250,12 @@ AS
 
 SELECT  FORMAT(DATEADD(DD, tally.n, @start_date), 'yyyyMMdd') AS date_key
 , DATEADD(DD, tally.n, @start_date) AS date
+
+-- we'll update these later with a series of UPDATE statements in a stored procedure
+, 0 AS is_calendar_holiday
+, 0 AS is_company_holiday
+, 0 AS is_mfg_holiday
+
 , FORMAT(DATEADD(DD, tally.n, @start_date), 'dddd, MMMM dd, yyyy') AS date_name_long
 , FORMAT(DATEADD(DD, tally.n, @start_date), 'MMM dd, yyyy') AS date_name_short
 , tally.n+1 AS rolling_index
